@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using static Flights.Data.Entities.EntitiesEnums;
@@ -8,31 +9,44 @@ namespace Flights.Data.Entities
 {
     public class Aircraft : BaseCRUD
     {
+
+        [Required(ErrorMessage = "Le nom de l'avion est requis")]
+        [Display(Name = "Nom de l'avion")]
         public string AircraftName { get; set; }
 
         /// <summary>
         /// Consommation de carburant pour 1 KM/h
         /// </summary>
+        [Required(ErrorMessage = "La consommation du carburant est requise")]
+        [Display(Name = "Consommation du carburant (l/km/h)")]
         public float FuelConsumption_Per_KM_Per_Hour { get; set; }
 
         /// <summary>
         /// Consommation de carburant au décollage
         /// </summary>
+        [Required(ErrorMessage = "La consommation de carburant au décollage est requise")]
+        [Display(Name = "Consommation du carburant au décollage (l/km/h)")]
         public float TakeOffEffort { get; set; }
 
         /// <summary>
         /// Réserve nécéssaire en cas de problème pendant le vol
         /// </summary>
+        [Required(ErrorMessage = "La réserve de carburant est requise")]
+        [Display(Name = "Réserve de carburant (l/km/h)")]
         public float RequiredFuelReserve { get; set; }
 
         /// <summary>
         /// Temps de préparation de l'avion
         /// </summary>
+        [Required(ErrorMessage = "Le temps de préparation de l'avion est requis")]
+        [Display(Name = "Temps de préparation de l'avion")]
         public TimeSpan PreparationTimeSpan { get; set; }
 
         /// <summary>
         /// Nombre de personnes maximales pour l'avion
         /// </summary>
+        [Required(ErrorMessage = "La capacité totale des passagers est requise")]
+        [Display(Name = "Capacité totale des passagers")]
         public int TotalCapacity { get; set; }
 
         public List<Flight> Flights { get; set; }

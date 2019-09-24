@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using static Flights.Data.Entities.EntitiesEnums;
@@ -17,11 +18,28 @@ namespace Flights.Areas.Administration.Models
         public IEnumerable<SelectListItem> AircraftList { get; set; }
         public IEnumerable<SelectListItem> IncludedPeople { get; set; }
         public IEnumerable<SelectListItem> ExcludedPeople { get; set; }
+
+        [Display(Name = "Personnes incluses")]
         public List<string> PeopleIds { get; set; }
+
+        [Required(ErrorMessage = "Le départ est requis")]
+        [Display(Name = "Aéroport de départ")]
         public Guid DepartureAirportGuid { get; set; }
+
+        [Required(ErrorMessage = "La destination est requise")]
+        [Display(Name = "Aéroport d'arrivée")]
         public Guid DestinationAirportGuid { get; set; }
+
+        [Required(ErrorMessage = "La date et l'heure de début sont requises")]
+        [Display(Name = "Date et heure de début")]
         public DateTime DateTimeBegin { get; set; }
+
+        [Required(ErrorMessage = "La date et l'heure de fin sont requises")]
+        [Display(Name = "Date et heure de fin")]
         public DateTime DateTimeEnd { get; set; }
+
+        [Required(ErrorMessage = "L'avion est requis")]
+        [Display(Name = "Avion")]
         public Guid AircraftGuid { get; set; }
         public List<FlightPerson> FlightPersons { get; set; }
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using static Flights.Data.Entities.EntitiesEnums;
@@ -9,9 +10,20 @@ namespace Flights.Data.Entities
 {
     public class Airport : BaseCRUD
     {
+        [Required(ErrorMessage = "Le nom de l'aéroport est requis")]
+        [Display(Name = "Aéroport")]
         public string AirportName { get; set; }
+
+        [Required(ErrorMessage = "Le pays de l'aéroport est requis")]
+        [Display(Name = "Pays")]
         public string AirportCountry { get; set; }
+
+        [Required(ErrorMessage = "La latitude est requise")]
+        [Display(Name = "Latitude")]
         public double Latitude { get; set; }
+
+        [Required(ErrorMessage = "La longitude est requise")]
+        [Display(Name = "Longitude")]
         public double Longitude { get; set; }
         public List<Flight> FlightsDeparture { get; set; }
         public List<Flight> FlightsDestination { get; set; }
