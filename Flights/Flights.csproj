@@ -13,17 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Areas\Avocat - Copier\**" />
-    <Compile Remove="Areas\Client - Copier\**" />
-    <Compile Remove="wwwroot\folders\**" />
-    <Content Remove="Areas\Avocat - Copier\**" />
-    <Content Remove="Areas\Client - Copier\**" />
     <Content Remove="wwwroot\folders\**" />
-    <EmbeddedResource Remove="Areas\Avocat - Copier\**" />
-    <EmbeddedResource Remove="Areas\Client - Copier\**" />
     <EmbeddedResource Remove="wwwroot\folders\**" />
-    <None Remove="Areas\Avocat - Copier\**" />
-    <None Remove="Areas\Client - Copier\**" />
     <None Remove="wwwroot\folders\**" />
   </ItemGroup>
 
