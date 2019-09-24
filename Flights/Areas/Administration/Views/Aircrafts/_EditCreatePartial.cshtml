@@ -1,0 +1,25 @@
+﻿@using Flights.Extensions
+@model Flights.Data.Entities.Aircraft
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var FuelConsumption_Per_KM_Per_Hour_Value = "0";
+    var TakeOffEffortValue = "0";
+    var RequiredFuelReserveValue = "0";
+
+    if (Model != null)
+    {
+        FuelConsumption_Per_KM_Per_Hour_Value = Model.FuelConsumption_Per_KM_Per_Hour.ToString().Replace(",", ".");
+        TakeOffEffortValue = Model.TakeOffEffort.ToString().Replace(",", ".");
+        RequiredFuelReserveValue = Model.TakeOffEffort.ToString().Replace(",", ".");
+    }
+}
+
+@Html.HiddenFor(m => m.RowVersion)
+@Html.Flights().FormTextBoxFor(m => m.AircraftName)
+@Html.Flights().FormTextBoxFor(m => m.FuelConsumption_Per_KM_Per_Hour, FuelConsumption_Per_KM_Per_Hour_Value, null, new { @type = "number", @step = "0.01" })
+@Html.Flights().FormTextBoxFor(m => m.TakeOffEffort, TakeOffEffortValue, null, new { @type = "number", @step = "0.01" })
+@Html.Flights().FormTextBoxFor(m => m.RequiredFuelReserve, RequiredFuelReserveValue, null, new { @type = "number", @step = "0.01" })
+@Html.Flights().FormTextBoxFor(m => m.PreparationTimeSpan, Model?.PreparationTimeSpan, "{0:hh\\:mm}", new { @placeholder = "hh:mm", @inputMask = "99:99"})
+@Html.Flights().FormTextBoxFor(m => m.TotalCapacity, new { @type = "number" })

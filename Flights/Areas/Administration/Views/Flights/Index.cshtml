@@ -1,0 +1,78 @@
+﻿@using Flights.Extensions
+@model List<Flights.Data.Entities.Flight>
+@{
+    ViewData["Title"] = "Vols";
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Vols
+            @*<small>Control panel</small>*@
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-users"></i> Réservation de vols</a></li>
+            <li class="active">Vols</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title">Liste des vols</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <button type="button" id="btnAdd" class="btn btn-success">Ajouter</button>
+                        <button type="button" id="btnEdit" class="btn btn-primary">Modifier</button>
+                        <button type="button" id="btnRemove" class="btn btn-warning">Archiver</button>
+                    </div>
+                    <div class="box-body table-responsive">
+                        <table id="Vols" class="table table-bordered table-striped table-full-features">
+                            <thead>
+                                <tr>
+                                    <th>Aéroport de départ</th>
+                                    <th>Aéroport d'arrivée</th>
+                                    <th>Date de début</th>
+                                    <th>Date de fin</th>
+                                    <th>Avion</th>
+                                    <th>Temps de préparation</th>
+                                    <th>Distance (KM)</th>
+                                    <th>Carburant requis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    @foreach (Flights.Data.Entities.Flight vol in Model)
+                                    {
+                                        <tr id="@vol.Id">
+                                            <td>@vol.DepartureAirport</td>
+                                            <td>@vol.DestinationAirport</td>
+                                            <td>@vol.DateTimeBegin.ToString("dd MMMM yyyy HH:mm:ss")</td>
+                                            <td>@vol.DateTimeEnd.ToString("dd MMMM yyyy HH:mm:ss")</td>
+                                            <td>@vol.Aircraft</td>
+                                            <td>@vol.Aircraft.PreparationTimeSpan.ToString()</td>
+                                            <td>@vol.CalculateDistance()</td>
+                                            <td>@vol.CalculateRequiredFuel()</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.main content -->
+</div>
+@section Scripts {
+    <script>setControllerPath('@Url.Action(string.Empty, "Flights")')</script>
+    <script src="~/Administration/js/Flights.js" asp-append-version="true"></script>
+}

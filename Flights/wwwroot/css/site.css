@@ -1,0 +1,85 @@
+﻿ /*Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets.*/
+.showBanner {
+    padding-top: 50px;
+}
+
+.validation-summary-errors,
+.field-validation-error {
+    color: #a94442;
+}
+
+.field-validation-success {
+    color: #00a65a;
+}
+
+.form-width-quarter {
+    width: 25%;
+    float: left;
+    margin-right: 25%;
+}
+
+.form-textbox {
+    width: 100%;
+    line-height: 2em;
+    border-radius: 2px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #f0f0f0;
+    text-indent: 0.6em;
+}
+
+.form-textbox:focus,
+.form-textbox:hover {
+    box-shadow : 0 3px 6px rgba(0,0,0,0.3)
+}
+
+.table-full-features > tbody > tr:hover a {
+    background-color: #3c8dbc !important;
+    color: #fff !important;
+}
+
+.table-full-features > tbody > tr > td > a {
+    color: #000 !important;
+}
+
+.table-full-features > tbody > tr:hover {
+    background-color: #3c8dbc !important;
+    color: #fff !important;
+}
+
+.table-full-features > tbody > tr.selected {
+    background-color: #3c8dbc !important;
+    color: #fff !important;
+}
+
+.form-group > div > div > a {
+    color: #333
+}
+
+.form-group > div > div > i.fa-close {
+    color: #c9302c;
+    cursor: pointer;
+}
+
+iframe{
+    border: none !important;
+}
+
+.listbox-transfer {
+    float: left;
+    display: inline-grid;
+    margin-top: 25px;
+}
+
+.checkBoxLabel {
+    margin-left : 5px;
+}
+
+.user-menu{
+    text-align:center;
+}
+
+.sidebar-menu > .header{
+    text-align:center;
+}

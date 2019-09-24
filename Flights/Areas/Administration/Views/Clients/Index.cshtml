@@ -1,0 +1,78 @@
+﻿@using Flights.Extensions
+@model List<Flights.Data.Entities.Person>
+@{
+    ViewData["Title"] = "Clients";
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Clients
+            @*<small>Control panel</small>*@
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-users"></i> Réservation de vols</a></li>
+            <li class="active">Clients</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title">Liste des clients</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <button type="button" id="btnAdd" class="btn btn-success">Ajouter</button>
+                        <button type="button" id="btnEdit" class="btn btn-primary">Modifier</button>
+                        <button type="button" id="btnRemove" class="btn btn-warning">Archiver</button>
+                    </div>
+                    <div class="box-body table-responsive">
+                        <table id="Clients" class="table table-bordered table-striped table-full-features">
+                            <thead>
+                                <tr>
+                                    <th>Civilité</th>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>Nom d'utilisateur</th>
+                                    <th>Adresse</th>
+                                    <th>Ville</th>
+                                    <th>Code Postal</th>
+                                    <th>Numéro de téléphone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    @foreach (Flights.Data.Entities.Person person in Model)
+                                    {
+                                <tr id="@person.Id">
+                                    <td>@Html.Flights().GetDisplayNameForEnum(person.Civility)</td>
+                                    <td>@person.Surname</td>
+                                    <td>@person.Name</td>
+                                    <td>@person.UserName</td>
+                                    <td>@person.Address</td>
+                                    <td>@person.Town</td>
+                                    <td>@person.ZIPCode</td>
+                                    <td>@person.PhoneNumber</td>
+                                </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.main content -->
+</div>
+@section Scripts {
+    <script>setControllerPath('@Url.Action(string.Empty, "Clients")')</script>
+    <script src="~/Administration/js/Clients.js" asp-append-version="true"></script>
+}

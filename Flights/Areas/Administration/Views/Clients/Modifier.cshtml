@@ -1,0 +1,53 @@
+﻿@model Flights.Data.Entities.Person
+@{
+    ViewData["Title"] = "Modifier un client";
+    string URLEdit = Url.Action("Modifier", "Clients", new { @Id = Model.Id });
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Clients
+            @*<small>Control panel</small>*@
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-users"></i> Réservation de vols</a></li>
+            <li class="active">Clients</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box box-success">
+                    <div class="box-header">
+                        <h3 class="box-title">Modifier un client</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <form class="form-width-quarter" method="post" action="@URLEdit">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+                            <partial name="_EditCreatePartial" />
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Modifier</button>
+                                <button name="editBtn" value="edit_resend" type="submit" class="btn btn-warning">Modifier & Renvoyer le mail</button>
+                                <button id="btnCancel" type="button" class="btn btn-danger">Annuler</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+@section Scripts {
+    <script>setControllerPath('@Url.Action(string.Empty, "Clients")')</script>
+    <script src="~/Administration/js/Clients.js" asp-append-version="true"></script>
+}

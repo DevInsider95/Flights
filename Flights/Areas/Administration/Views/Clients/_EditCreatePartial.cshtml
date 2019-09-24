@@ -1,0 +1,15 @@
+﻿@using Flights.Extensions
+@model Flights.Data.Entities.Person
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@Html.Flights().FormDropDownListFor(m => m.Civility, Html.GetEnumSelectList(typeof(Flights.Data.Entities.Person.ECivility)), "Veuillez sélectionner la civilité")
+@Html.Flights().FormTextBoxFor(m => m.Surname)
+@Html.Flights().FormTextBoxFor(m => m.Name)
+@Html.Flights().FormTextBoxFor(m => m.Email, new { @type = "email" })
+@Html.Flights().FormTextBoxFor(m => m.Address)
+@Html.Flights().FormTextBoxFor(m => m.Town)
+@Html.Flights().FormInputMaskFor(m => m.ZIPCode, "99999")
+@Html.Flights().FormInputMaskFor(m => m.PhoneNumber, "99.99.99.99.99")
+@Html.Flights().FormDropDownListFor(m => m.Status, Html.GetEnumSelectList(typeof(Flights.Data.Entities.EntitiesEnums.EStatus)), "Veuillez sélectionner le statut du compte")

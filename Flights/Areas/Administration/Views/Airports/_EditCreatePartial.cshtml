@@ -1,0 +1,21 @@
+﻿@using Flights.Extensions
+@model Flights.Data.Entities.Airport
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var LatitudeValue = "0";
+    var LongitudeValue = "0";
+
+    if (Model != null)
+    {
+        LatitudeValue = Model.Latitude.ToString().Replace(",", ".");
+        LongitudeValue = Model.Longitude.ToString().Replace(",", ".");
+    }
+}
+
+@Html.HiddenFor(m => m.RowVersion)
+@Html.Flights().FormTextBoxFor(m => m.AirportName)
+@Html.Flights().FormTextBoxFor(m => m.AirportCountry)
+@Html.Flights().FormTextBoxFor(m => m.Latitude, LatitudeValue, null, new { @type = "number", @step = "0.01" })
+@Html.Flights().FormTextBoxFor(m => m.Longitude, LongitudeValue, null, new { @type = "number", @step = "0.01" })

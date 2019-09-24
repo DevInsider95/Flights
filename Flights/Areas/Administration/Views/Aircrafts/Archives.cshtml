@@ -1,0 +1,72 @@
+﻿@using Flights.Extensions
+@model List<Flights.Data.Entities.Aircraft>
+@{
+    ViewData["Title"] = "Avions - Archives";
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Avions
+            @*<small>Control panel</small>*@
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-users"></i> Réservation de vols</a></li>
+            <li class="active">Avions</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title">Liste des avions archivés</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <button type="button" id="btnEdit" class="btn btn-primary">Modifier</button>
+                    </div>
+                    <div class="box-body table-responsive">
+                        <table id="Aircrafts" class="table table-bordered table-striped table-full-features">
+                            <thead>
+                                <tr>
+                                    <th>Nom de l'avion</th>
+                                    <th>Consommation / (KM/h)</th>
+                                    <th>Consommation au décollage</th>
+                                    <th>Réserve de carburant requise</th>
+                                    <th>Temps de préparation</th>
+                                    <th>Capacité totale de passagers</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    @foreach (Flights.Data.Entities.Aircraft aircraft in Model)
+                                    {
+                                <tr id="@aircraft.Id">
+                                    <td>@aircraft.AircraftName</td>
+                                    <td>@aircraft.FuelConsumption_Per_KM_Per_Hour</td>
+                                    <td>@aircraft.RequiredFuelReserve</td>
+                                    <td>@aircraft.TakeOffEffort</td>
+                                    <td>@aircraft.PreparationTimeSpan.ToString()</td>
+                                    <td>@aircraft.TotalCapacity</td>
+                                </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.main content -->
+</div>
+@section Scripts {
+    <script>setControllerPath('@Url.Action(string.Empty, "Aircrafts")')</script>
+    <script src="~/Administration/js/Aircrafts.js" asp-append-version="true"></script>
+}

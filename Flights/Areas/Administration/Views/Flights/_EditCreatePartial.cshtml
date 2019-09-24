@@ -1,0 +1,11 @@
+﻿@using Flights.Extensions
+@model Flights.Areas.Administration.Models.FlightsViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@Html.HiddenFor(m => m.RowVersion)
+@Html.Flights().FormDropDownListFor(m => m.DepartureAirportGuid, Model.AirportsList, "Veuillez sélectionner l'aéroport de départ")
+@Html.Flights().FormDropDownListFor(m => m.DestinationAirportGuid, Model.AirportsList, "Veuillez sélectionner l'aéroport de d'arrivée")
+@Html.Flights().FormDatePickerFor(m => m.DateTimeBegin, "dateDebut")
+@Html.Flights().FormDatePickerFor(m => m.DateTimeEnd, "dateFin")
